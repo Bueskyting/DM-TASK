@@ -5,13 +5,21 @@
   function renderForm($title = '', $runtime = '') {
     return '
       <form method="GET" action="">
-        <label for="title">Title:</label>
-        <input type="text" id="title" placeholder="Enter full or partial title" name="title" value="' . htmlspecialchars($title) . '">
 
-        <label for="runtime">Runtime:</label>
-        <input type="text" id="runtime" placeholder="e.g.:<100 or >100" name="runtime" value="' . htmlspecialchars($runtime) . '">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" placeholder="Enter movie title here" name="title" value="' . htmlspecialchars($title) . '">
+        </div>
 
-        <input type="submit" value="filter">
+        <div class="form-group">
+          <label for="runtime">Runtime:</label>
+          <input type="text" id="runtime" placeholder="<100 or >100" name="runtime" value="' . htmlspecialchars($runtime) . '">
+        </div>
+
+        <div class="filter-button">
+          <input type="submit" value="Filter">
+        </div>
+
       </form>
     ';
   }

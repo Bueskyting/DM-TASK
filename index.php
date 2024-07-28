@@ -1,3 +1,16 @@
+<?php 
+
+  require 'form.php';
+  require 'movie.php';
+  require 'movie_list.php';
+  require 'movieRepository.php';
+  require 'movieController.php';
+
+  $title = isset($_GET['title']) ? $_GET['title'] : '';
+  $runtime = isset($_GET['runtime']) ? $_GET['runtime'] : '';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,28 +29,21 @@
 </head>
 <body>
 
-  <!-- This file displays the form and movie list -->
+  <header>
+    <div class="form-container">
+      <?php echo renderForm($title, $runtime); ?>
+    </div>
+  </header>
 
-  <div class="form-container">
+  <div class="content">
 
     <?php
 
-    require 'form.php';
-    require 'movie.php';
-    require 'movieRepository.php';
-    require 'movieController.php';
+      $movieRepository = new MovieRepository();
+      $movieController = new MovieController($movieRepository);
+      $movies = $movieController->handleRequest();
 
-    $title = isset($_GET['title']) ? $_GET['title'] : '';
-    $runtime = isset($_GET['runtime']) ? $_GET['runtime'] : '';
-
-    echo renderForm($title, $runtime);
-
-    $movieRepository = new MovieRepository();
-    $movieController = new MovieController($movieRepository);
-    $movies = $movieController->handleRequest();
-
-    require 'movie_list.php';
-    echo renderMovieList($movies);
+      echo renderMovieList($movies);
 
     ?>
   

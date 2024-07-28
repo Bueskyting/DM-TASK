@@ -7,18 +7,20 @@
       return "<p>No movies found.</p>";
     }
 
-    $html = '<ul>';
+    $html = '<div class="movie-list">';
     foreach ($movies as $movie) {
       $html .= '
-        <li>
-          <img src="' . htmlspecialchars($movie->getImage()) . '" alt="' . htmlspecialchars($movie->getTitle()) . '" style="width:100px;">
-          <h3>' . htmlspecialchars($movie->getTitle()) . '</h3>
-          <p><strong>Runtime:</strong> ' . htmlspecialchars($movie->getRunningTime()) . ' minutes</p>
-          <p>' . htmlspecialchars($movie->getDescription()) . '</p>
-        </li>
+        <div class="movie-card">
+          <img src="' . htmlspecialchars($movie->getImage()) . '" alt="' . htmlspecialchars($movie->getTitle()) . '" class="movie-image">
+          <div class="movie-details">
+            <h3>' . htmlspecialchars($movie->getTitle()) . '</h3>
+            <p><strong>Runtime:</strong> ' . htmlspecialchars($movie->getRunningTime()) . ' minutes</p>
+            <p>' . htmlspecialchars($movie->getDescription()) . '</p>
+          </div>
+        </div>
       ';
     }
-    $html .= '</ul>';
+    $html .= '</div>';
 
     return $html;
   }
