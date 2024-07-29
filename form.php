@@ -17,7 +17,7 @@
         </div>
 
         <div class="filter-button">
-          <input type="submit" value="Filter">
+          <input type="submit" value="Submit">
         </div>
 
       </form>
