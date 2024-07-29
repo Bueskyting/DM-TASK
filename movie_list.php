@@ -15,7 +15,7 @@
           <div class="movie-details">
             <h3>' . htmlspecialchars($movie->getTitle()) . '</h3>
             <p><strong>Runtime:</strong> ' . htmlspecialchars($movie->getRunningTime()) . ' minutes</p>
-            <p>' . htmlspecialchars($movie->getDescription()) . '</p>
+            <p class="description">' . htmlspecialchars($movie->getDescription()) . '</p>
           </div>
         </div>
       ';
